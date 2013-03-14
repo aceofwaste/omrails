@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+    <title>One Month Rails</title>
+    <link href="/assets/application-351c283d8a72fbeff2022a562ca0d881.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="/assets/application-136762764eed4b60c2d1681bb90dd442.js" type="text/javascript"></script>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="/NBWwa5R4VqcJuaiP9maI11tCf7RT0/r14erUHCBdDs=" name="csrf-token" />    
+    <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35943148-3']);
+  _gaq.push(['_setDomainName', 'onemonthrails.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A step-by-step guide to learning Ruby on Rails in less than one month."> 
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="/" class="brand">One Month Rails</a>
+      <nav>
+        <ul class="nav pull-right">
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <div class="container">
+      
+<ul class="breadcrumb">
+	<li>
+		<a href="/lectures">Lectures</a>
+	</li>
+	<span class="divider">/</span>
+	<li class="active">
+		Adding Pages
+	</li>
+	<ul class="pull-right">
+		<li><a href="/lectures/creating-a-new-app">&lt; Previous Lecture</a></li> 
+			<span class="divider">|</span>
+		<li><a href="/lectures/adding-bootstrap">Next Lecture &gt;</a></li>
+	</ul>
+</ul>
+
+<div class="video-wrapper"><iframe src='http://player.vimeo.com/video/58535928?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="#lecture-notes" data-toggle="tab">Lecture Notes</a>
+		</li>
+<!-- 		<li>
+			<a href="#comments" data-toggle="tab">Comments</a>
+		</li> -->
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="lecture-notes">
+			<p><strong>Note:</strong> There is a typo in this video. In the file <code>pages_controller.rb</code>, the line <code>def action</code> should be <code>def about</code>. It will still work if you don&#39;t fix it because defining actions for pages in Rails is optional if they&#39;re empty, but defining an action action in the Pages controller won&#39;t do anything because there&#39;s no associated view.</p>
+
+<p><em>terminal</em></p>
+<div class="highlight"><pre>$ <span class="n">rails</span> <span class="n">generate</span> <span class="n">controller</span> <span class="n">Pages</span> <span class="n">home</span>             # <span class="n">Create</span> <span class="n">a</span> <span class="n">Pages</span> <span class="n">controller</span> <span class="n">with</span> <span class="n">a</span> <span class="n">home</span> <span class="n">action</span>
+$ <span class="n">rm</span> <span class="n">public</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>                                        # <span class="n">public</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">will</span> <span class="n">automatically</span> <span class="n">override</span> <span class="n">any</span> <span class="n">root</span> <span class="n">route</span> <span class="n">set</span>
+</pre></div>
+<p><em>/config/routes.rb</em></p>
+<div class="highlight"><pre><span class="n">Omrails</span><span class="p">::</span><span class="n">Application</span><span class="p">.</span><span class="n">routes</span><span class="p">.</span><span class="n">draw</span> <span class="n">do</span>
+
+  <span class="n">root</span> <span class="p">:</span><span class="n">to</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;pages#home&#39;</span>
+  <span class="n">get</span> <span class="s">&#39;about&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;pages#about&#39;</span>
+
+<span class="k">end</span>
+</pre></div>
+<p><em>/app/controllers/pages_controller.rb</em></p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">PagesController</span> <span class="o">&lt;</span> <span class="n">ApplicationController</span>
+  <span class="n">def</span> <span class="n">home</span>
+  <span class="k">end</span>
+
+  <span class="n">def</span> <span class="n">about</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+<p><em>/app/views/layouts/application.html.erb</em></p>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>One Month Rails<span class="nt">&lt;/title&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">stylesheet_link_tag</span>    <span class="s2">&quot;application&quot;</span><span class="p">,</span> <span class="ss">:media</span> <span class="o">=&gt;</span> <span class="s2">&quot;all&quot;</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">javascript_include_tag</span> <span class="s2">&quot;application&quot;</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">csrf_meta_tags</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">render</span> <span class="s1">&#39;layouts/header&#39;</span> <span class="cp">%&gt;</span>
+
+    <span class="cp">&lt;%=</span> <span class="k">yield</span> <span class="cp">%&gt;</span>
+
+    <span class="cp">&lt;%=</span> <span class="n">render</span> <span class="s1">&#39;layouts/footer&#39;</span> <span class="cp">%&gt;</span>
+
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p><em>/app/views/layouts/_header.html.erb</em></p>
+<div class="highlight"><pre><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="n">root_path</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;About&quot;</span><span class="p">,</span> <span class="n">about_path</span> <span class="cp">%&gt;</span><span class="x"></span>
+</pre></div>
+<p><em>/app/views/layouts/_footer.html.erb</em></p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;small&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;One Month Rails&quot;</span><span class="p">,</span> <span class="s2">&quot;http://onemonthrails.com&quot;</span> <span class="cp">%&gt;</span>
+    by <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Mattan Griffel&quot;</span><span class="p">,</span> <span class="s2">&quot;http://mattangriffel.com&quot;</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/small&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+<p><em>/app/views/pages/home.html.erb</em></p>
+<div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Welcome to One Month Rails!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  You&#39;ve found the home page for the
+  <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;One Month Rails&quot;</span><span class="p">,</span> <span class="s2">&quot;http://onemonthrails.com&quot;</span> <span class="cp">%&gt;</span>
+  application.
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Sign Up Now!&quot;</span><span class="p">,</span> <span class="n">new_user_registration_path</span><span class="p">,</span> <span class="n">class</span><span class="p">:</span> <span class="s2">&quot;btn btn-primary btn-large&quot;</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+<p><em>/app/views/pages/about.html.erb</em></p>
+<div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>About<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;One Month Rails&quot;</span><span class="p">,</span> <span class="s2">&quot;http://onemonthrails.com&quot;</span> <span class="cp">%&gt;</span>
+  is a project to teach 
+  <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Ruby on Rails&quot;</span><span class="p">,</span> <span class="s2">&quot;http://rubyonrails.org&quot;</span> <span class="cp">%&gt;</span>
+  in one month. This is the sample application.
+<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+		</div>
+		<div class="tab-pane" id="comments">
+			<p>Comments will go here.</p>
+		</div>
+	</div>
+</div>
+
+      <footer class="footer">
+  <small>
+    <a href="http://onemonthrails.com/">One Month Rails</a>
+    by Mattan Griffel
+  </small>
+  <nav>
+    <ul>
+<!--       <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li> -->
+    </ul>
+  </nav>
+</footer>
+    </div>
+  <script type="text/javascript">if (!NREUMQ.f) { NREUMQ.f=function() {
+NREUMQ.push(["load",new Date().getTime()]);
+var e=document.createElement("script");
+e.type="text/javascript";
+e.src=(("http:"===document.location.protocol)?"http:":"https:") + "//" +
+  "d1ros97qkrwjf5.cloudfront.net/42/eum/rum.js";
+document.body.appendChild(e);
+if(NREUMQ.a)NREUMQ.a();
+};
+NREUMQ.a=window.onload;window.onload=NREUMQ.f;
+};
+NREUMQ.push(["nrfj","beacon-3.newrelic.com","c888a78c33","1778417","dF1fF0NfXgoBRBYOAVRGRBFUQx0VDFlO",2,32,new Date().getTime(),"","","","",""]);</script></body>
+</html>
